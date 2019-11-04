@@ -1,0 +1,15 @@
+<div class="row">
+  <% @user.histories.each do |history| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= link_to(image_tag(history.picture.thumb), history) if history.picture? %>
+        <div class="caption">
+          <h3><%= history.title %></h3>
+          <h5>Creado por: <%= history.user.email %></h5>
+          <small><%= time_ago_in_words(history.created_at) %> ago</small>
+          <p><%= history.content.truncate(150)  %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
